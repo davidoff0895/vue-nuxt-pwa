@@ -27,7 +27,7 @@
   })
   export default class CategoriesList extends Vue {
     @Prop(Array)
-    protected categories: ICategory[] | undefined
+    protected categories!: ICategory[]
   }
 </script>
 

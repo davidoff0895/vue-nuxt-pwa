@@ -34,9 +34,9 @@
           ...this.meta
 
         ],
-        script: [
+        // script: [
           // { src: 'https://markknol.github.io/console-log-viewer/console-log-viewer.js' }
-        ],
+        // ],
         link: [{ rel: 'canonical', href: canonical }]
       }
     }
