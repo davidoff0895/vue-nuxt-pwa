@@ -7,7 +7,6 @@ module.exports = {
   ...(!isDev && {
     modern: 'client'
   }),
-
   head: {
     htmlAttrs: {
       lang: 'ru'
@@ -32,9 +31,11 @@ module.exports = {
   loading: {color: '#ddd'},
   css: [
     'normalize.css',
-    // './assets/scss/global-styles.scss'
+    './assets/scss/global-styles.scss'
   ],
-  plugins: [],
+  plugins: [
+    { src: '~~/plugins/vue-lazy-load.js' }
+  ],
   modules: [
     '@nuxtjs/axios',
     'nuxt-trailingslash-module',
@@ -52,15 +53,11 @@ module.exports = {
     timeout: 5000
   },
   styleResources: {
-    // your settings here
-    // scss: ['./assets/scss/global-variables.scss'],
+    scss: ['./assets/scss/global-variables.scss'],
     //alternative: scss,
     less: [],
     stylus: []
   },
-  /*
-  ** Axios module configuration
-  */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
   },
@@ -78,6 +75,11 @@ module.exports = {
     }
   },
   build: {
+    build: {
+      babel: {
+        plugins: ['transform-decorators-legacy', 'transform-class-properties']
+      }
+    },
     optimizeCss: false,
     filenames: {
       app: ({ isDev }) => isDev ? '[name].js' : 'js/[contenthash].js',
